@@ -1,7 +1,7 @@
 <?php
-ob_start();
+ob_start(); // Evita problemas con header()
 session_start();
-include DIR . '/../conf/conexion.php';
+include __DIR__ . '/../conf/conexion.php'; // Ruta corregida
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
