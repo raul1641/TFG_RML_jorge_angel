@@ -22,9 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             // Redirigir según tipo de usuario
             if ($_SESSION['user_type'] == 'admin') {
-                header("Location: ../Panel_A_U/P_admin.html");
+                header("Location: /Panel_A_U/P_admin.html");
             } else {
-                header("Location: ../Panel_A_U/P_usuario.php");
+                header("Location: /Panel_A_U/P_usuario.php");
             }
             exit; // ← Detener ejecución después de redirigir
         } else {
