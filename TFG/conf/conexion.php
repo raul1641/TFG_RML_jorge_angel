@@ -1,3 +1,4 @@
+<?php
 $servidor = getenv('DB_HOST');
 $puerto = getenv('DB_PORT');
 $usuario = getenv('DB_USER');
@@ -20,3 +21,4 @@ try {
 } catch (Exception $e) {
     echo "Error: " . $e->getMessage();
 }
+?>
