@@ -7,10 +7,15 @@
 // -> la contraseña
 // -> esquema (shema) que quiero utilizar
 
-$servidor="127.0.0.1";
-$usuario="jorge";
-$contraseña="666666.j";
-$shema="registro_libros";
+$servidor = "iasanz.synology.me:3306/rmolinal_PROYECTO_JORGE_ANGEL";
+$usuario="alumno";
+$contraseña="AlumnoSanz$1";
+$shema="rmolinal_PROYECTO_JORGE_ANGEL"
+
+// $servidor="127.0.0.1";
+// $usuario="jorge";
+// $contraseña="666666.j";
+// $shema="registro_libros";
 
 //**********************************************************************
 // CONEXIÓN A LOCALHOST
