@@ -1,6 +1,7 @@
 <?php
-session_start(); // ← Primera línea
-include '../conf/conexion.php';
+ob_start();
+session_start();
+include DIR . '/../conf/conexion.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -14,24 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-        
         if (password_verify($password, $user['password'])) {
-            // Guardar datos en sesión
             $_SESSION['user_id'] = $user['id_usuario'];
             $_SESSION['user_type'] = $user['tipo_usuario'];
-            
+
             // Redirigir según tipo de usuario
-            if ($_SESSION['user_type'] == 'admin') {
-                header("Location: /Panel_A_U/P_admin.html");
-            } else {
-                header("Location: /Panel_A_U/P_usuario.php");
-            }
-            exit; // ← Detener ejecución después de redirigir
+            header("Location: /Panel_A_U/" . ($_SESSION['user_type'] == 'admin' ? "P_admin.html" : "P_usuario.php"));
+            exit;
         } else {
-            echo "Contraseña incorrecta.";
+            $error_message = "Contraseña incorrecta.";
         }
     } else {
-        echo "Usuario no encontrado.";
+        $error_message = "Usuario no encontrado.";
     }
 }
 ?>
