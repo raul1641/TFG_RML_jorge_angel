@@ -1,0 +1,70 @@
+----------------------------------------
+Relación Usuario - Préstamo (REALIZA)
+
+    Cardinalidad: 📌 1 Usuario puede realizar muchos Préstamos (1:N)
+    Explicación: Un usuario puede tomar prestados varios libros, pero cada préstamo pertenece a un solo usuario.
+    Notación:
+        Usuario (1) → (N) Préstamo
+
+-----------------------------------------
+Relación Préstamo - Libro (PUEDE HACER)
+
+    Cardinalidad: 📌 1 Libro puede estar en muchos Préstamos (1:N)
+    Explicación: Un libro puede ser prestado muchas veces, pero cada préstamo se asocia a un solo libro.
+    Notación:
+        Libro (1) → (N) Préstamo
+
+-----------------------------------------
+ Relación Usuario - Historial_Prestamos (HACER)
+
+    Cardinalidad: 📌 1 Usuario puede tener muchos préstamos en su historial (1:N)
+    Explicación: Un usuario puede haber realizado múltiples préstamos en el pasado.
+    Notación:
+        Usuario (1) → (N) Historial_Prestamos
+-----------------------------------------
+Relación Préstamo - Historial_Prestamos
+
+    Cardinalidad: 📌 1 Préstamo se convierte en 1 Registro en el Historial (1:1)
+    Explicación: Cuando un préstamo se devuelve, se mueve al historial.
+    Notación:
+        Préstamo (1) → (1) Historial_Prestamos
+-----------------------------------------
+
+____________________________________________________________________________________________________________
+					CARDINALIDADES DE TABLAS:
+____________________________________________________________________________________________________________
+
+
+Usuario → Préstamo ✅ (Ya la hiciste)
+
+    Usuario: 1:N → Un usuario puede hacer uno o más préstamos.
+    Préstamo: 0:N → Un préstamo puede involucrar a cero o muchos usuarios (aunque en la práctica, siempre tendrá al menos un usuario).
+
+2️⃣ Usuario → Historial_Prestamos
+
+    Usuario: 1:N → Un usuario puede tener uno o más registros en el historial de préstamos.
+    Historial_Prestamos: 0:N → Un registro en el historial puede existir para cero o muchos usuarios (si aún no ha hecho préstamos, el historial está vacío).
+
+3️⃣ Libro → Préstamo
+
+    Libro: 1:N → Un libro puede ser prestado una o más veces.
+    Préstamo: 0:N → Un préstamo puede involucrar cero o varios libros (aunque en la práctica, siempre debería tener al menos un libro).
+
+4️⃣ Libro → Historial_Prestamos
+
+    Libro: 1:N → Un libro puede aparecer en el historial varias veces (diferentes préstamos).
+    Historial_Prestamos: 0:N → Un registro en el historial puede involucrar cero o muchos libros.
+
+
+***********************************************************************************************************
+
+ESTRUCUTRA PROYECTO:
+
+mi estructura es: ( C = CARPETA VALE?):
+C TFG_RML_JORGE_ANGEL TFG
+C TFG 
+C conf - conexion.php
+C index - index.html, script.js, styles.css
+C login - login.html, registro.html, styles.login.css
+C PhP - registro.php
+

@@ -1,0 +1,154 @@
+body {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.register-container {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    margin: auto;
+}
+
+.btn-custom {
+    background-color: #6c5ce7;
+    border-color: #6c5ce7;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #5b4dc4;
+    border-color: #5b4dc4;
+    color: white;
+}
+
+.form-floating {
+    margin-bottom: 1rem;
+}
+
+.password-strength {
+    height: 5px;
+    margin-top: 5px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.strength-weak {
+    background-color: #ff4757;
+}
+
+.strength-medium {
+    background-color: #ffa502;
+}
+
+.strength-strong {
+    background-color: #2ed573;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo-icon {
+    font-size: 3rem;
+    color: #6c5ce7;
+    margin-bottom: 1rem;
+}
+
+/****
+
+/* Estilos para los badges de estado */
+.badge {
+    padding: 0.5em 0.8em;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.badge.bg-success {
+    background-color: #28a745 !important; /* Verde para Disponible */
+    color: white;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important; /* Gris para Prestado */
+    color: white;
+}
+
+/* Estilos para los botones */
+.btn {
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    transition: all 0.3s ease;
+}
+
+.btn-success {
+    background-color: #28a745; /* Verde para Solicitar */
+    border-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Verde oscuro al pasar el mouse */
+    border-color: #218838;
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Gris para No disponible */
+    border-color: #6c757d;
+    color: white;
+    cursor: not-allowed; /* Cambia el cursor a "no permitido" */
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268; /* Gris oscuro al pasar el mouse */
+    border-color: #5a6268;
+}
+/* Estilos para la tabla */
+.table {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+    background: #6c5ce7; /* Color morado para el encabezado */
+    color: white;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 1rem;
+}
+
+.table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f7ff; /* Fondo morado claro al pasar el mouse */
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.2);
+}
+
+.table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-color: #ececff;
+}
+
+/********************/
+
+

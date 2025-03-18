@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - BookLineRML</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="p_admin.css"> <!-- Asumiendo que ya tienes un archivo de estilos -->
+</head>
+
+<body class="admin-body">
+  <div class="container-fluid">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-book-reader"></i> BookLineRML
+      </a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#dashboard-section">Panel Principal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#books-section">Libros</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#users-section">Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#loans-section">Préstamos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-danger" href="logout.php">Cerrar Sesión</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Secciones del Panel -->
+    <div class="content-wrapper mt-4">
+      <!-- Dashboard Section -->
+      <section id="dashboard-section" class="section">
+        <h2>Panel Principal</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Libros Totales</h5>
+                <p class="card-text" id="total-books">245</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Usuarios Activos</h5>
+                <p class="card-text" id="active-users">128</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Préstamos Activos</h5>
+                <p class="card-text" id="active-loans">42</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección de Gestión de Libros -->
+      <section id="books-section" class="section mt-4">
+        <h2>Gestión de Libros</h2>
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addBookModal">
+          <i class="fas fa-plus"></i> Añadir Libro
+        </button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="books-list">
+            <!-- Libros cargados dinámicamente -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Sección de Gestión de Usuarios -->
+      <section id="users-section" class="section mt-4">
+        <h2>Gestión de Usuarios</h2>
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addUserModal">
+          <i class="fas fa-plus"></i> Añadir Usuario
+        </button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="users-list">
+            <!-- Usuarios cargados dinámicamente -->
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Sección de Gestión de Préstamos -->
+      <section id="loans-section" class="section mt-4">
+        <h2>Gestión de Préstamos</h2>
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#addLoanModal">
+          <i class="fas fa-plus"></i> Añadir Préstamo
+        </button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Libro</th>
+              <th>Usuario</th>
+              <th>Fecha Préstamo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="loans-list">
+            <!-- Préstamos cargados dinámicamente -->
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+
+  <!-- Modal para Añadir Libro -->
+  <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addBookModalLabel">Añadir Nuevo Libro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addBookForm">
+            <div class="mb-3">
+              <label for="bookTitle" class="form-label">Título</label>
+              <input type="text" class="form-control" id="bookTitle" required>
+            </div>
+            <div class="mb-3">
+              <label for="bookAuthor" class="form-label">Autor</label>
+              <input type="text" class="form-control" id="bookAuthor" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Añadir Usuario -->
+  <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addUserModalLabel">Añadir Nuevo Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addUserForm">
+            <div class="mb-3">
+              <label for="userName" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="userName" required>
+            </div>
+            <div class="mb-3">
+              <label for="userEmail" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="userEmail" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para Añadir Préstamo -->
+  <div class="modal fade" id="addLoanModal" tabindex="-1" aria-labelledby="addLoanModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addLoanModalLabel">Añadir Nuevo Préstamo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addLoanForm">
+            <div class="mb-3">
+              <label for="loanBook" class="form-label">Libro</label>
+              <select class="form-control" id="loanBook" required>
+                <option value="" disabled selected>Seleccionar Libro</option>
+                <!-- Libros cargados dinámicamente -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="loanUser" class="form-label">Usuario</label>
+              <select class="form-control" id="loanUser" required>
+                <option value="" disabled selected>Seleccionar Usuario</option>
+                <!-- Usuarios cargados dinámicamente -->
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="loanDate" class="form-label">Fecha Préstamo</label>
+              <input type="date" class="form-control" id="loanDate" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="p_admin.js"></script> <!-- Tu archivo de lógica en JS -->
+</body>
+
+</html>

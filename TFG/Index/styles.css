@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima de la ventana */
+    margin: 0; /* Eliminar márgenes por defecto */
+}
+
+.main-content {
+    flex: 1; /* Ocupa el espacio restante para empujar el footer abajo */
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
+    color: white;
+    padding: 100px 0;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    color: #6c5ce7;
+    margin-bottom: 1rem;
+}
+
+.navbar-custom {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bg-custom {
+    background-color: #2d3436 !important; /* Color original del diseño */
+    margin-top: auto; /* Empuja el footer al final */
+    width: 100%;
+}
+
+.footer {
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    text-align: center;
+    padding: 1rem 0; /* Espaciado interno */
+    background-color: #2d3436; /* Color del footer */
+    color: white; /* Color del texto */
+}
+
+.btn-custom:hover {
+    background-color: #5b4dc4;
+    border-color: #5b4dc4;
+    color: white;
+}
+
+.book-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+
+    .display-4 {
+        font-size: 2.5rem;
+    }
+}
