@@ -136,7 +136,7 @@ if (isset($_SESSION['pdf_content'])) {
                         </thead>
                         <tbody >
                     
-                        <?php include '../PHP/mis_prestamos.php'; ?>
+                       <?php include __DIR__ . '/../PHP/mis_prestamos.php'; ?>
                         
                         </tbody>
                     </table>
