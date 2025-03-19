@@ -110,7 +110,7 @@ if (isset($_SESSION['pdf_content'])) {
                         </thead>
                         <tbody>
                         
-                        <?php include '../PHP/libros.php'; ?>
+                        <?php include '/../PHP/libros.php'; ?>
                         
                         </tbody>
                     </table>
