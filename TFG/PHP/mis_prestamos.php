@@ -1,5 +1,4 @@
 <?php
-session_start(); // ← Añadir esto para manejar sesiones
 include __DIR__ . '/../conf/conexion.php'; // Ruta absoluta con __DIR__
 
 if (!isset($_SESSION['user_id'])) {
