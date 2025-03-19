@@ -6,7 +6,7 @@ include '../conf/conexion.php'; // Incluye el archivo con la configuración de c
 $TP = 5; // TP = Total por Página. Define cuantos libros mostrar por página
 
 // Obtener número total de registros
-$consulta_total = "SELECT COUNT(*) as total FROM libro"; // Consulta SQL para contar todos los libros
+$consulta_total = "SELECT COUNT(*) as total FROM Libro"; // Consulta SQL para contar todos los libros
 $resultado_total = $conexion->query($consulta_total); // Ejecuta la consulta
 $fila_total = $resultado_total->fetch_assoc(); // Obtiene el resultado como array asociativo
 $NR = $fila_total['total']; // NR = Número de Registros totales. Almacena el total de libros
@@ -23,7 +23,7 @@ if ($PA > $NP) $PA = $NP; // Validación para no exceder el número máximo de p
 $RI = ($PA - 1) * $TP; // RI = Registro de Inicio. Calcula desde qué registro debe empezar en la BD
 
 // Obtener datos de la página actual con seguridad
-$consulta = "SELECT id_libro, titulo, autor, estado FROM libro LIMIT ?, ?"; // Consulta preparada
+$consulta = "SELECT id_libro, titulo, autor, estado FROM Libro LIMIT ?, ?"; // Consulta preparada
 $stmt = $conexion->prepare($consulta); // Prepara la consulta SQL
 $stmt->bind_param("ii", $RI, $TP); // Asigna los parámetros (enteros) para LIMIT
 $stmt->execute(); // Ejecuta la consulta
