@@ -101,52 +101,50 @@ try {
     $stmtUser->execute();
     $resUser = $stmtUser->get_result();
 
-    if ($resUser->num_rows > 0) {
-        $usuario = $resUser->fetch_assoc();
-        $mail = new PHPMailer(true);
+    // 5. Enviar email
+if ($resUser->num_rows > 0) {
+    $usuario = $resUser->fetch_assoc();
+    $mail = new PHPMailer(true);
 
-        try {
-            // Configuración SMTP
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'gradomediosmrv@gmail.com';
-            $mail->Password = 'wayi jvfe sdec drdf';
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = 587;
-            $mail->CharSet = 'UTF-8';
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'gradomediosmrv@gmail.com';
+        $mail->Password = 'wayi jvfe sdec drdf'; // ← Usar contraseña de aplicación
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+        $mail->CharSet = 'UTF-8';
+        $mail->SMTPDebug = 2; // ← Activar depuración (0 para producción)
 
-            // Remitente y destinatarios
-            $mail->setFrom('gradomediosmrv@gmail.com', 'Biblioteca BookLineRML');
-            $mail->addAddress('smtp.code.oficial33@gmail.com', 'Profesor');
-            $mail->addCC($usuario['email'], $usuario['nombre']);
+        $mail->setFrom('gradomediosmrv@gmail.com', 'Biblioteca BookLineRML');
+        $mail->addAddress('smtp.code.oficial33@gmail.com', 'Profesor');
+        $mail->addCC($usuario['email'], $usuario['nombre']);
 
-            // Plantilla de email
-            $ruta_plantilla = __DIR__ . '/../plantillas/email_prestamo.html';
-            
-            if (!file_exists($ruta_plantilla)) {
-                throw new Exception("Plantilla no encontrada: $ruta_plantilla");
-            }
-
-            $plantilla = file_get_contents($ruta_plantilla);
-            
-            $mail->isHTML(true);
-            $mail->Subject = "Confirmación de préstamo: $titulo";
-            $mail->Body = str_replace(
-                ['{NOMBRE}', '{TITULO}', '{FECHA}', '{ID_PRESTAMO}'],
-                [$usuario['nombre'], $titulo, $fecha_solicitud, $id_prestamo],
-                $plantilla
-            );
-
-            $mail->AltBody = "Hola {$usuario['nombre']}, has solicitado el libro '{$titulo}' el {$fecha_solicitud}. ID: {$id_prestamo}";
-            
-            $mail->send();
-            $_SESSION['email_enviado'] = true;
-        } catch (Exception $e) {
-            error_log("Error al enviar correo: " . $e->getMessage());
-            $_SESSION['email_enviado'] = false;
+        // Cargar plantilla
+        $ruta_plantilla = __DIR__ . '/../plantillas/email_prestamo.html';
+        if (!file_exists($ruta_plantilla)) {
+            throw new Exception("Plantilla no encontrada en: $ruta_plantilla");
         }
+        $plantilla = file_get_contents($ruta_plantilla);
+
+        // Personalizar y enviar
+        $mail->isHTML(true);
+        $mail->Subject = "Préstamo confirmado: $titulo";
+        $mail->Body = str_replace(
+            ['{NOMBRE}', '{TITULO}', '{FECHA}', '{ID_PRESTAMO}'],
+            [$usuario['nombre'], $titulo, $fecha_solicitud, $id_prestamo],
+            $plantilla
+        );
+        
+        $mail->send();
+        $_SESSION['email_enviado'] = true;
+
+    } catch (Exception $e) {
+        error_log("Error crítico en PHPMailer: " . $e->getMessage());
+        $_SESSION['email_enviado'] = false;
     }
+}
 
     // Confirmar transacción y redirigir
     $conexion->commit();
