@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Cifrar la contraseña antes de guardarla
     $hashed_password = password_hash($password, PASSWORD_DEFAULT); // Cifra la contraseña
 
-    $sql = "INSERT INTO Usuario (nombre, email, password, tipo_usuario, fecha_registro) VALUES (?, ?, ?, ?, NOW())";
+    $sql = "INSERT INTO usuario (nombre, email, password, tipo_usuario, fecha_registro) VALUES (?, ?, ?, ?, NOW())";
     $stmt = $conexion->prepare($sql);
     $stmt->bind_param("ssss", $nombre, $email, $hashed_password, $tipo_usuario); // Usa la contraseña cifrada
 
