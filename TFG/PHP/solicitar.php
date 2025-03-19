@@ -121,12 +121,14 @@ if ($resUser->num_rows > 0) {
         $mail->addAddress('smtp.code.oficial33@gmail.com', 'Profesor');
         $mail->addCC($usuario['email'], $usuario['nombre']);
 
-        // Cargar plantilla
-        $ruta_plantilla = __DIR__ . '../plantillas/email_prestamo.html';
-        if (!file_exists($ruta_plantilla)) {
-            throw new Exception("Plantilla no encontrada en: $ruta_plantilla");
-        }
-        $plantilla = file_get_contents($ruta_plantilla);
+       // Dentro del bloque try/catch del email:
+$ruta_plantilla = __DIR__ . '/plantillas/email_prestamo.html';
+
+if (!file_exists($ruta_plantilla)) {
+    throw new Exception("¡Archivo de plantilla faltante! Ruta: " . $ruta_plantilla);
+}
+
+$plantilla = file_get_contents($ruta_plantilla);
 
         // Personalizar y enviar
         $mail->isHTML(true);
