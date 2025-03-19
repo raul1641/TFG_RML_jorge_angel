@@ -1,6 +1,6 @@
 <?php
 // Conexión a la base de datos
-include '/../conf/conexion.php'; // Incluye el archivo con la configuración de conexión a la BD
+include '../conf/conexion.php'; // Incluye el archivo con la configuración de conexión a la BD
 
 // Número de registros por página
 $TP = 5; // TP = Total por Página. Define cuantos libros mostrar por página
