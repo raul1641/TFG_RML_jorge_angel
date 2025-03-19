@@ -122,7 +122,7 @@ if ($resUser->num_rows > 0) {
         $mail->addCC($usuario['email'], $usuario['nombre']);
 
         // Cargar plantilla
-        $ruta_plantilla = __DIR__ . '/../plantillas/email_prestamo.html';
+        $ruta_plantilla = __DIR__ . '../plantillas/email_prestamo.html';
         if (!file_exists($ruta_plantilla)) {
             throw new Exception("Plantilla no encontrada en: $ruta_plantilla");
         }
