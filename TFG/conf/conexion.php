@@ -16,9 +16,12 @@ try {
 
     // Configurar la codificación UTF-8
     $conexion->query("SET NAMES 'utf8'");
-
-    echo "<b>MENSAJE:</b><br> Conexión exitosa a la base de datos.";
+    
+    // Eliminar este mensaje o cambiarlo por un comentario
+    // echo "<b>MENSAJE:</b><br> Conexión exitosa a la base de datos.";
 } catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
+    // Considera usar un log en lugar de mostrar el error directamente
+    error_log("Error de conexión: " . $e->getMessage());
+    // echo "Error: " . $e->getMessage();
 }
 ?>
