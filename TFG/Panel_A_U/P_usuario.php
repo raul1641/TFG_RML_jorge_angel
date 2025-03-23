@@ -78,25 +78,27 @@ if (isset($_SESSION['pdf_content'])) {
 <main class="container mt-5 pt-4">
     <section id="buscar" class="mb-5">
         <div class="card">
-            <div class="card-body">
-                <h2 class="card-title mb-4"><i class="fas fa-search me-2"></i>Buscar Libros</h2>
-                <div class="row g-3">
-                    <div class="col-md-8">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="searchInput" placeholder="Buscar por título o autor...">
-                            <button class="btn btn-primary" type="button" id="searchButton">
-                                <i class="fas fa-search"></i> Buscar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <select class="form-select" id="availabilityFilter">
-                            <option value="">Disponibilidad</option>
-                            <option value="disponible">Disponible</option>
-                            <option value="prestado">Prestado</option>
-                        </select>
-                    </div>
-                </div>
+           <!-- <div class="card-body">
+    <h2 class="card-title mb-4"><i class="fas fa-search me-2"></i>Buscar Libros</h2>
+    <div class="row g-3">
+        <div class="col-md-8">
+            <div class="input-group">
+                <input type="text" class="form-control" id="searchInput" placeholder="Buscar por título o autor...">
+                <button class="btn btn-primary" type="button" id="searchButton">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <select class="form-select" id="availabilityFilter">
+                <option value="">Disponibilidad</option>
+                <option value="disponible">Disponible</option>
+                <option value="prestado">Prestado</option>
+            </select>
+        </div>
+    </div>
+</div> -->
+
 
                 <div class="table-responsive mt-4">
                     <table class="table table-hover" id="booksTable">
