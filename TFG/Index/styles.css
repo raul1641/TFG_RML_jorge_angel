@@ -1,59 +1,59 @@
+/* Establece la estructura básica del cuerpo de la página */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Altura mínima de la ventana */
-    margin: 0; /* Eliminar márgenes por defecto */
+    display: flex; /* Activa flexbox */
+    flex-direction: column; /* Organiza el contenido en columna */
+    min-height: 100vh; /* Ocupa al menos toda la altura de la ventana */
+    margin: 0; /* Elimina márgenes por defecto */
 }
 
+/* Hace que el contenido principal ocupe el espacio disponible */
 .main-content {
-    flex: 1; /* Ocupa el espacio restante para empujar el footer abajo */
+    flex: 1; /* Expande el contenido para empujar el footer hacia abajo */
 }
 
+/* Sección destacada con fondo en degradado */
 .hero-section {
-    background: linear-gradient(135deg, #6c5ce7 0%, #a363d9 100%);
-    color: white;
-    padding: 100px 0;
+    background: #6c5ce7; /* Color de fondo sólido más simple */
+    color: white; /* Texto en blanco */
+    padding: 80px 0; /* Espaciado arriba y abajo */
 }
 
+/* Estiliza iconos con un tamaño grande */
 .feature-icon {
-    font-size: 2.5rem;
-    color: #6c5ce7;
-    margin-bottom: 1rem;
+    font-size: 2rem; /* Tamaño de icono reducido */
+    color: #6c5ce7; /* Color del icono */
+    margin-bottom: 1rem; /* Espaciado inferior */
 }
 
+/* Personalización de la barra de navegación */
 .navbar-custom {
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: white; /* Fondo blanco */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-.bg-custom {
-    background-color: #2d3436 !important; /* Color original del diseño */
-    margin-top: auto; /* Empuja el footer al final */
-    width: 100%;
-}
-
+/* Estilos del footer */
 .footer {
-    width: 100%; /* Asegura que ocupe todo el ancho */
-    text-align: center;
+    width: 100%; /* Ocupa todo el ancho */
+    text-align: center; /* Texto centrado */
     padding: 1rem 0; /* Espaciado interno */
-    background-color: #2d3436; /* Color del footer */
-    color: white; /* Color del texto */
+    background-color: #2d3436; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    margin-top: auto; /* Empuja el footer hacia abajo */
 }
 
+/* Efecto al pasar el mouse sobre el botón */
 .btn-custom:hover {
-    background-color: #5b4dc4;
-    border-color: #5b4dc4;
-    color: white;
+    background-color: #5b4dc4; /* Cambia el fondo al pasar el mouse */
+    border-color: #5b4dc4; /* Cambia el borde */
+    color: white; /* Mantiene el texto blanco */
 }
 
-
-/* Ajustes responsive */
+/* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 60px 0;
+        padding: 50px 0; /* Reduce el espaciado */
     }
-
     .display-4 {
-        font-size: 2.5rem;
+        font-size: 2rem; /* Reduce el tamaño del título */
     }
 }
